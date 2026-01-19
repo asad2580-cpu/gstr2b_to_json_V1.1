@@ -176,6 +176,10 @@ def generate_vouchers_string(invoices, company_name):
 
 # --- THE API ENDPOINT ---
 
+@app.get("/")
+def home():
+    return {"status": "API is Live", "message": "Send a POST request to /process-gst to begin."}
+
 @app.post("/process-gst")
 async def process_gst(file: UploadFile = File(...), company_name: str = Form(...)):
     try:
